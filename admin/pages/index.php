@@ -17,7 +17,6 @@
 <body>
     <?php
         require 'config.php';
-
         session_start();
     ?>
 
@@ -69,13 +68,13 @@
         <?php include './movies/movies.php'; ?>
     </div>
     <div id="content-cinemas" class="content" style="display:none;">
-        <?php include './cinemas.php'; ?>
+        <?php include './cinemas/cinemas.php'; ?>
     </div>
     <div id="content-halls" class="content" style="display:none;">
-        <?php include './halls.php'; ?>
+        <?php include './halls/halls.php'; ?>
     </div>
     <div id="content-seats" class="content" style="display:none;">
-        <?php include './seats.php'; ?>
+        <?php include './seats/seats.php'; ?>
     </div>
     <div id="content-showtimes" class="content" style="display:none;">
         <?php include './show_times.php'; ?>
