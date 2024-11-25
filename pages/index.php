@@ -45,7 +45,7 @@ session_start();
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <form action="" method="post" id="cinemaForm">
+                <form action="" method="post" id="cinemaForm" style="margin-right: 50px">
                     <select name="cinemas" id="cinemas" class="nav-link" onchange="submitForm()">
                         <option value="" selected>CHỌN RẠP PHIM</option>
                         <?php
@@ -84,14 +84,6 @@ session_start();
                 <li class="nav-item">
                     <?php
                     if (isset($_SESSION['selectedCinemaID']) && $_SESSION['selectedCinemaID'])
-                        echo '<a class="nav-link main" href="/BetaCinema_Clone/pages/lich_chieu_theo_rap.php?cinema_id=' . $selectedCinemaID . '" style="margin-left: 15px">LỊCH CHIẾU THEO RẠP</a>';
-                    else
-                        echo '<a class="nav-link main" href="" style="margin-left: 15px" onclick="alert(\'Vui lòng chọn rạp phim.\')">LỊCH CHIẾU THEO RẠP</a>';
-                    ?>
-                </li>
-                <li class="nav-item">
-                    <?php
-                    if (isset($_SESSION['selectedCinemaID']) && $_SESSION['selectedCinemaID'])
                         echo '<a class="nav-link main" href="/BetaCinema_Clone/pages/rap.php?cinema_id=' . $selectedCinemaID . '" style="margin-left: 15px">RẠP</a>';
                     else
                         echo '<a class="nav-link main" href="" style="margin-left: 15px" onclick="alert(\'Vui lòng chọn rạp phim.\')">RẠP</a>';
@@ -126,7 +118,7 @@ session_start();
                 </li>
             </ul>
             <form class="d-flex" role="search" method="post">
-                <input type="text" class="form-control search-movie" name="search" placeholder="Tìm kiếm phim..." aria-label="Search for movie">
+                <input type="text" class="form-control search-movie" name="search" placeholder="Tìm kiếm phim..." aria-label="Search for movie" size="30">
                 <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search" style="font-size:20px;"></i></button>
             </form>
         </div>

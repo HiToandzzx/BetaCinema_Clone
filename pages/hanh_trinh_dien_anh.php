@@ -46,8 +46,8 @@
         $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $offset = ($currentPage - 1) * $rowsPerPage;
 
-        $countQuery = "SELECT COUNT(*) AS total FROM payments WHERE UserID = $userID";
-        $query = "SELECT * FROM payments LIMIT $offset, $rowsPerPage";
+        $query = "SELECT * FROM payments WHERE UserID = '$userID' LIMIT $offset, $rowsPerPage";
+        $countQuery = "SELECT COUNT(*) AS total FROM payments WHERE UserID = '$userID'";
 
         $countResult = mysqli_query($connect, $countQuery);
         $totalRows = mysqli_fetch_assoc($countResult)['total'];
@@ -55,82 +55,115 @@
         $totalPages = ceil($totalRows / $rowsPerPage);
     ?>
 
-<div class="d-flex justify-content-center pt-5">
-    <div class="container w-100">
-        <div class="tab-content" id="movieTabContent">
-            <h3 class="text-center">HÀNH TRÌNH ĐIỆN ẢNH</h3>
-            <div class="row row-cols-1">
-                <?php
-                    $stt = $offset + 1;
-                    if (mysqli_num_rows($result) > 0) {
-                        echo '<table class="table table-bordered text-center mt-4">';
-                        echo '<thead>';
+    <div class="container">
+        <h3 class="text-center">HÀNH TRÌNH ĐIỆN ẢNH</h3>
+        <div class="row row-cols-1">
+            <?php
+                $stt = $offset + 1;
+                if (mysqli_num_rows($result) > 0) {
+                    echo '<table class="table table-bordered text-center mt-4">';
+                    echo '<thead>';
+                    echo '<tr>';
+                    echo '<th>MÃ HOÁ ĐƠN</th>';
+                    echo '<th>NGÀY ĐẶT</th>';
+                    echo '<th>PHIM</th>';
+                    echo '<th>RẠP CHIẾU</th>';
+                    echo '<th>NGÀY CHIẾU</th>';
+                    echo '<th>RẠP</th>';
+                    echo '<th>SUẤT CHIẾU</th>';
+                    echo '<th>GHẾ ĐÃ ĐẶT</th>';
+                    echo '<th>PTTT</th>';
+                    echo '<th>TỔNG GIÁ</th>';
+                    echo '<th>CHỨC NĂNG</th>';
+                    echo '</tr>';
+                    echo '</thead>';
+                    echo '<tbody>';
+
+                    date_default_timezone_set('Asia/Ho_Chi_Minh');
+
+                    // Fetch the current date and time in Vietnam's time zone
+                    $currentDate = date("Y-m-d");
+                    $currentTime = date("H:i");
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $formattedTotalPrice = number_format($row['TotalPrice'], 0, ',', '.');
+                        $formattedShowDate = date("d/m/Y", strtotime($row['ShowDate']));
+                        $formattedPaymentDate = date("d/m/Y", strtotime($row['PaymentDate']));
+                        $formattedStartTime = date("H:i", strtotime($row['StartTime']));
+                    
+                        // Kiểm tra điều kiện hiển thị REFUND
+                        $showDate = $row['ShowDate'];
+                        $startTime = $row['StartTime'];
+                        
+                        // Combine show date and start time into a datetime string
+                        $showDateTime = $showDate . ' ' . $startTime;
+                        $showDateTimeTimestamp = strtotime($showDateTime);
+                        
+                        // Get the current datetime
+                        $currentDateTime = date("Y-m-d H:i");
+                        $currentDateTimeTimestamp = strtotime($currentDateTime);
+                        
+                        // Calculate the difference in hours between the current time and the show time
+                        $timeDifferenceInSeconds = $showDateTimeTimestamp - $currentDateTimeTimestamp;
+                        $timeDifferenceInHours = $timeDifferenceInSeconds / 3600; // Convert seconds to hours
+
+                        // Check if the refund is available (showtime is at least 6 hours away)
+                        $showRefundButton = ($timeDifferenceInHours >= 6);
+                    
                         echo '<tr>';
-                        echo '<th>MÃ HOÁ ĐƠN</th>';
-                        echo '<th>NGÀY ĐẶT</th>';
-                        echo '<th>PHIM</th>';
-                        echo '<th>RẠP CHIẾU</th>';
-                        echo '<th>NGÀY CHIẾU</th>';
-                        echo '<th>RẠP</th>';
-                        echo '<th>SUẤT CHIẾU</th>';
-                        echo '<th>GHẾ ĐÃ ĐẶT</th>';
-                        echo '<th>PTTT</th>';
-                        echo '<th>TỔNG GIÁ</th>';
-                        echo '</tr>';
-                        echo '</thead>';
-                        echo '<tbody>';
-
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            $formattedTotalPrice = number_format($row['TotalPrice'], 0, ',', '.');
-                            $formattedShowDate = date("d/m/Y", strtotime($row['ShowDate']));
-                            $formattedPaymentDate = date("d/m/Y", strtotime($row['PaymentDate']));
-                            $formattedStartTime = date("H:i", strtotime($row['StartTime']));
-                            echo '<tr>';
-                            echo '<td>' . $stt++ . '</td>';
-                            echo '<td>' . htmlspecialchars($formattedPaymentDate) . '</td>';
-                            echo '<td>' . htmlspecialchars($row['MovieTitle']) . '</td>';
-                            echo '<td>' . htmlspecialchars($row['CinemaName']) . '</td>';
-                            echo '<td>' . htmlspecialchars($formattedShowDate) . '</td>';
-                            echo '<td>' . htmlspecialchars($row['HallName']) . '</td>';
-                            echo '<td>' . htmlspecialchars($formattedStartTime) . '</td>';
-                            echo '<td>' . htmlspecialchars($row['Seats']) . '</td>';
-                            echo '<td>' . htmlspecialchars(string: $row['PaymentMethod']) . '</td>';
-                            echo '<td>' . htmlspecialchars($formattedTotalPrice) . '</td>';
-                            echo '</tr>';
+                        echo '<td>' . $stt++ . '</td>';
+                        echo '<td>' . htmlspecialchars($formattedPaymentDate) . '</td>';
+                        echo '<td>' . htmlspecialchars($row['MovieTitle']) . '</td>';
+                        echo '<td>' . htmlspecialchars($row['CinemaName']) . '</td>';
+                        echo '<td>' . htmlspecialchars($formattedShowDate) . '</td>';
+                        echo '<td>' . htmlspecialchars($row['HallName']) . '</td>';
+                        echo '<td>' . htmlspecialchars($formattedStartTime) . '</td>';
+                        echo '<td>' . htmlspecialchars($row['Seats']) . '</td>';
+                        echo '<td>' . htmlspecialchars($row['PaymentMethod']) . '</td>';
+                        echo '<td>' . htmlspecialchars($formattedTotalPrice) . '</td>';
+                        echo "<td>";
+                        if ($showRefundButton) {
+                            echo "<a href='/BetaCinema_Clone/pages/refund.php?id=" . htmlspecialchars($row['PaymentID']) . "' class='btn btn-danger btn-sm mt-1' onclick=\"return confirm('Bạn có chắc chắn muốn hoàn vé?');\">REFUND</a>";
                         }
-                        echo '</tbody>';
-                        echo '</table>';
-                    } else {
-                        echo '<h4 class="text-center" styles="color: red">Bạn chưa có hoá đơn nào</h4>';
+                        echo "</td>";
+                        echo '</tr>';
                     }
-                    mysqli_free_result($result);
-                ?>           
-                <!-- PAGINATION -->
-                <div class="d-flex justify-content-center">
-                    <ul class="pagination">
-                        <?php if ($currentPage > 1): ?>
-                        <li class="page-item">
-                            <a class="page-link" href="?tab=history&page=<?= $currentPage - 1 ?>">&lt;</a>
-                        </li>
-                        <?php endif; ?>
+                    
+                    echo '</tbody>';
+                    echo '</table>';
+                } else {
+                    echo '<div class="d-flex justify-content-center">';
+                    echo '<img class="cart" src="/BetaCinema_Clone/assets/cart-empty.png" alt="">';
+                    echo '</div>';
+                }
+                mysqli_free_result($result);
+            ?>                 
+            
+            <!-- PAGINATION -->
+            <div class="d-flex justify-content-center">
+                <ul class="pagination">
+                    <?php if ($currentPage > 1): ?>
+                    <li class="page-item">
+                        <a class="page-link" href="?tab=history&page=<?= $currentPage - 1 ?>">&lt;</a>
+                    </li>
+                    <?php endif; ?>
 
-                        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                        <li class="page-item <?= ($i == $currentPage) ? 'active' : '' ?>">
-                            <a class="page-link" href="?tab=history&page=<?= $i ?>"><?= $i ?></a>
-                        </li>
-                        <?php endfor; ?>
+                    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                    <li class="page-item <?= ($i == $currentPage) ? 'active' : '' ?>">
+                        <a class="page-link" href="?tab=history&page=<?= $i ?>"><?= $i ?></a>
+                    </li>
+                    <?php endfor; ?>
 
-                        <?php if ($currentPage < $totalPages): ?>
-                        <li class="page-item">
-                            <a class="page-link" href="?tab=history&page=<?= $currentPage + 1 ?>">&gt;</a>
-                        </li>
-                        <?php endif; ?>
-                    </ul>
-                </div>
+                    <?php if ($currentPage < $totalPages): ?>
+                    <li class="page-item">
+                        <a class="page-link" href="?tab=history&page=<?= $currentPage + 1 ?>">&gt;</a>
+                    </li>
+                    <?php endif; ?>
+                </ul>
+            </div>
 
-                <div class="col">
-                    <a href="/BetaCinema_Clone/pages/index.php" class="btn btn-back col-12 w-100 mt-3">QUAY LẠI</a>
-                </div>
+            <div class="col">
+                <a href="/BetaCinema_Clone/pages/index.php" class="btn btn-back col-12 w-100 mt-3">QUAY LẠI</a>
             </div>
         </div>
     </div>
@@ -156,11 +189,21 @@
 
     .table{
         border-radius: 20px;
+        table-layout: fixed;
     }
 
     .table th, .table td {
         background: none; 
         font-size: 18px;
+    }
+
+    .container{
+        max-width: 1300px; 
+    }
+
+    .cart{
+        width: 350px;
+        height: auto;
     }
 </style>
 </html>

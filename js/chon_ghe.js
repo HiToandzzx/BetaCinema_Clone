@@ -76,3 +76,18 @@ function updateCountdown() {
 }
 
 const timerInterval = setInterval(updateCountdown, 1000);
+
+
+/* XỬ LÍ TRƯỚC KHI GỬI FORM */
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    const selectedSeatsInput = document.getElementById('selected-seats-input');
+    
+    form.addEventListener('submit', function(event) {
+        if (selectedSeatsInput.value.trim() === "") {
+            event.preventDefault();
+            
+            alert("Vui lòng chọn ít nhất một ghế.");
+        }
+    });
+});
