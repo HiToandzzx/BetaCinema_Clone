@@ -7,12 +7,10 @@
 
     $id = intval($_GET['id']); 
 
-    $query = "DELETE FROM payments WHERE UserID = $id";
+    $query = "DELETE FROM users WHERE UserID = $id";
     mysqli_query($connect, $query);
 
-    // Sau đó, xóa người dùng
-    $deleteQuery = "DELETE FROM users WHERE UserID = $id";
-    if (mysqli_query($connect, $deleteQuery)) {
+    if (mysqli_query($connect, $query)) {
         header("Location: /BetaCinema_Clone/admin/pages/users/users.php");
         exit();
     } else {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2024 at 02:29 AM
+-- Generation Time: Nov 26, 2024 at 04:47 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -129,7 +129,7 @@ CREATE TABLE `payments` (
   `PaymentID` int(11) NOT NULL,
   `PaymentDate` date NOT NULL DEFAULT current_timestamp(),
   `PaymentMethod` varchar(50) NOT NULL,
-  `UserID` int(11) NOT NULL,
+  `UserID` int(11) DEFAULT NULL,
   `MovieTitle` varchar(100) NOT NULL,
   `CinemaName` varchar(50) NOT NULL,
   `ShowDate` date NOT NULL,
@@ -146,15 +146,16 @@ CREATE TABLE `payments` (
 INSERT INTO `payments` (`PaymentID`, `PaymentDate`, `PaymentMethod`, `UserID`, `MovieTitle`, `CinemaName`, `ShowDate`, `HallName`, `StartTime`, `Seats`, `TotalPrice`) VALUES
 (10, '2024-11-14', 'Thanh toán tại Beta', 8, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-24', 'P2', '13:50:00', 'C1, C2, C3', 210000),
 (28, '2024-11-15', 'Thanh toán tại Beta', 8, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-27', 'P2', '13:50:00', 'D1, D2, D3', 360000),
-(63, '2024-11-25', 'Thanh toán tại Beta', 16, 'Red One: Mật Mã Đỏ', 'Beta Thanh Xuân', '2024-11-26', 'P2', '20:00:00', 'C1, C2, C3, C4, C5', 350000),
+(63, '2024-11-25', 'Thanh toán tại Beta', NULL, 'Red One: Mật Mã Đỏ', 'Beta Thanh Xuân', '2024-11-26', 'P2', '20:00:00', 'C1, C2, C3, C4, C5', 350000),
 (66, '2024-11-25', 'Thanh toán tại Beta', 9, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-26', 'P2', '13:50:00', 'A1, A2, A4, A5, B3', 225000),
 (67, '2024-11-25', 'Thanh toán tại Beta', 9, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-26', 'P2', '13:50:00', 'D1, D2, D3, D4, D5', 600000),
 (68, '2024-11-25', 'Thanh toán tại Beta', 9, 'Linh Miêu', 'Beta Thanh Xuân', '2024-11-30', 'P2', '17:00:00', 'C1, C2, C4, C5', 280000),
 (69, '2024-11-25', 'Thanh toán tại Beta', 9, 'Red One: Mật Mã Đỏ', 'Beta Thanh Xuân', '2024-11-26', 'P2', '13:50:00', 'A2, A3, A4', 135000),
 (70, '2024-11-25', 'Thanh toán tại Beta', 9, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-26', 'P2', '20:00:00', 'B2, B3, B4', 135000),
 (71, '2024-11-25', 'Thanh toán tại Beta', 9, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-25', 'P1', '22:00:00', 'A2, A3, A4', 135000),
-(72, '2024-11-26', 'Thanh toán tại Beta', 9, 'Venom: Kèo Cuối', 'Beta Nha Trang', '2024-11-30', 'P1', '17:00:00', 'D2, D1, D3, D4, D5', 600000),
-(73, '2024-11-26', 'Thanh toán tại Beta', 9, 'Ngày Xưa Có Một Chuyện Tình', 'Beta Nha Trang', '2024-11-26', 'P2', '19:00:00', 'C2, C3, C4, C5', 280000);
+(72, '2024-11-26', 'Thanh toán tại Beta', 17, 'Cười Xuyên Biên Giới', 'Beta Trần Quang Khải', '2024-11-30', 'P2', '17:00:00', 'C2, C3, C4', 210000),
+(73, '2024-11-26', 'Thanh toán tại Beta', 17, 'Ngày Xưa Có Một Chuyện Tình', 'Beta Thanh Xuân', '2024-11-27', 'P1', '13:50:00', 'D3, D4, D5', 360000),
+(77, '2024-11-26', 'Thanh toán tại Beta', NULL, 'Ngày Xưa Có Một Chuyện Tình', 'Beta Nha Trang', '2024-11-26', 'P2', '19:00:00', 'D1, D2, D4, D3, D5', 600000);
 
 -- --------------------------------------------------------
 
@@ -318,8 +319,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`UserID`, `Fullname`, `Email`, `Pass_word`, `Dob`, `Sex`, `Phone`, `Role`) VALUES
 (8, 'Admin', 'toan.nh.63cntt@ntu.edu.vn', '$2y$10$JZpN51oBCeJ3lklaJDhHf.LxHPRgeQD96Vv0DZkuRO.UK2DIQ8Sg6', '1999-09-09', 'Nam', '999999999', '0'),
 (9, 'Nguyen Huy Toan', 'nguyenhuytoan1432k3@gmail.com', '$2y$10$diq/yh9KEFPnU8sTQvA30OsN/XEPXNtPY5eEopQNH4.348u3lPWtq', '2024-11-24', 'Nam', '0935941419', '1'),
-(16, 'test', 'test@gmail.com', '$2y$10$V79EtrV58aJzr5DUSmbuQO.t7OBugZzm4I2pO173iifqtTMYXGnNy', '2024-11-25', 'Khác', '123', '1'),
-(17, 'trìu', 'hoangtrieu020903@gmail.com', '$2y$10$Hd6u4XHoX.34.IFeOeuOVe.llV6MxT9zXEIkENn9ESxA7aXcV6FfC', '2003-09-02', 'Nam', '123456789', '1');
+(17, 'Triều', 'hoangtrieu020903@gmail.com', '$2y$10$Y0OaS7/pti8V4JGrNkvPuOZIQSPsSB/dUn4evJDtau4i8ndV.VX6K', '2003-09-02', 'Nam', '123456789', '1');
 
 --
 -- Indexes for dumped tables
@@ -398,7 +398,7 @@ ALTER TABLE `movies`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `PaymentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `PaymentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `seats`
@@ -416,7 +416,7 @@ ALTER TABLE `show_times`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables
@@ -432,7 +432,7 @@ ALTER TABLE `halls`
 -- Constraints for table `payments`
 --
 ALTER TABLE `payments`
-  ADD CONSTRAINT `FK_Payments_Users` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`);
+  ADD CONSTRAINT `FK_Payments_Users` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`) ON DELETE SET NULL;
 
 --
 -- Constraints for table `seats`
