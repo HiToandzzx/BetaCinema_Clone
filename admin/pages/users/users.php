@@ -112,23 +112,29 @@
                 </thead>
                 <tbody>
                     <?php
-                    $stt = $offset + 1;
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        echo "<tr class='text-center'>";
-                        echo "<td>" . $stt++ . "</td>";
-                        echo "<td>" . htmlspecialchars($row['Fullname']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['Email']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['Pass_word']) . "</td>";
-                        echo "<td>" . (!empty($row['Dob']) ? date("d/m/Y", strtotime($row['Dob'])) : "N/A") . "</td>";
-                        echo "<td>" . htmlspecialchars($row['Sex']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['Phone']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['Role']) . "</td>";
-                        echo "<td>
-                                <a href='/BetaCinema_Clone/admin/pages/users/edit_users.php?id=" . htmlspecialchars($row['UserID']) . "' class='btn btn-warning btn-sm'>SỬA</a> <br>
-                                <a href='/BetaCinema_Clone/admin/pages/users/delete_users.php?id=" . htmlspecialchars($row['UserID']) . "' class='btn btn-danger btn-sm mt-1' onclick=\"return confirm('Bạn có chắc chắn muốn xoá user này không?');\">XOÁ</a>
-                            </td>";
-                        echo "</tr>";
-                    }
+                        $stt = $offset + 1;
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo "<tr class='text-center'>";
+                            echo "<td>" . $stt++ . "</td>";
+                            echo "<td>" . htmlspecialchars($row['Fullname']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['Email']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['Pass_word']) . "</td>";
+                            echo "<td>" . (!empty($row['Dob']) ? date("d/m/Y", strtotime($row['Dob'])) : "N/A") . "</td>";
+                            echo "<td>" . htmlspecialchars($row['Sex']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['Phone']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['Role']) . "</td>";
+                            echo "<td>";
+                            
+                            if ($row['Role'] == 0) {
+                                echo "<a href='/BetaCinema_Clone/admin/pages/users/edit_users.php?id=" . htmlspecialchars($row['UserID']) . "' class='btn btn-warning btn-sm'>SỬA</a> <br>";
+                            } else {
+                                echo "<a href='/BetaCinema_Clone/admin/pages/users/edit_users.php?id=" . htmlspecialchars($row['UserID']) . "' class='btn btn-warning btn-sm'>SỬA</a> <br>";
+                                echo "<a href='/BetaCinema_Clone/admin/pages/users/delete_users.php?id=" . htmlspecialchars($row['UserID']) . "' class='btn btn-danger btn-sm mt-1' onclick=\"return confirm('Bạn có chắc chắn muốn xoá user này không?');\">XOÁ</a>";
+                            }
+                            
+                            echo "</td>";
+                            echo "</tr>";
+                        }
                     ?>
                 </tbody>
             </table>   

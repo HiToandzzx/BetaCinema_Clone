@@ -68,13 +68,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}" 
                             title="Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường và một ký tự đặc biệt">
                     </div>
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="role" class="form-label">Role</label>
                         <select class="form-control" id="role" name="role">
                             <option value="0" <?php if ($user['Role'] == '0') echo 'selected'; ?>>0</option>
                             <option value="1" <?php if ($user['Role'] == '1') echo 'selected'; ?>>1</option>
                         </select>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
