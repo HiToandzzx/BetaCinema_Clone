@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2024 at 01:13 PM
+-- Generation Time: Nov 26, 2024 at 02:29 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -152,7 +152,9 @@ INSERT INTO `payments` (`PaymentID`, `PaymentDate`, `PaymentMethod`, `UserID`, `
 (68, '2024-11-25', 'Thanh toán tại Beta', 9, 'Linh Miêu', 'Beta Thanh Xuân', '2024-11-30', 'P2', '17:00:00', 'C1, C2, C4, C5', 280000),
 (69, '2024-11-25', 'Thanh toán tại Beta', 9, 'Red One: Mật Mã Đỏ', 'Beta Thanh Xuân', '2024-11-26', 'P2', '13:50:00', 'A2, A3, A4', 135000),
 (70, '2024-11-25', 'Thanh toán tại Beta', 9, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-26', 'P2', '20:00:00', 'B2, B3, B4', 135000),
-(71, '2024-11-25', 'Thanh toán tại Beta', 9, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-25', 'P1', '22:00:00', 'A2, A3, A4', 135000);
+(71, '2024-11-25', 'Thanh toán tại Beta', 9, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-25', 'P1', '22:00:00', 'A2, A3, A4', 135000),
+(72, '2024-11-26', 'Thanh toán tại Beta', 9, 'Venom: Kèo Cuối', 'Beta Nha Trang', '2024-11-30', 'P1', '17:00:00', 'D2, D1, D3, D4, D5', 600000),
+(73, '2024-11-26', 'Thanh toán tại Beta', 9, 'Ngày Xưa Có Một Chuyện Tình', 'Beta Nha Trang', '2024-11-26', 'P2', '19:00:00', 'C2, C3, C4, C5', 280000);
 
 -- --------------------------------------------------------
 
@@ -316,7 +318,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`UserID`, `Fullname`, `Email`, `Pass_word`, `Dob`, `Sex`, `Phone`, `Role`) VALUES
 (8, 'Admin', 'toan.nh.63cntt@ntu.edu.vn', '$2y$10$JZpN51oBCeJ3lklaJDhHf.LxHPRgeQD96Vv0DZkuRO.UK2DIQ8Sg6', '1999-09-09', 'Nam', '999999999', '0'),
 (9, 'Nguyen Huy Toan', 'nguyenhuytoan1432k3@gmail.com', '$2y$10$diq/yh9KEFPnU8sTQvA30OsN/XEPXNtPY5eEopQNH4.348u3lPWtq', '2024-11-24', 'Nam', '0935941419', '1'),
-(16, 'test', 'test@gmail.com', '$2y$10$V79EtrV58aJzr5DUSmbuQO.t7OBugZzm4I2pO173iifqtTMYXGnNy', '2024-11-25', 'Khác', '123', '1');
+(16, 'test', 'test@gmail.com', '$2y$10$V79EtrV58aJzr5DUSmbuQO.t7OBugZzm4I2pO173iifqtTMYXGnNy', '2024-11-25', 'Khác', '123', '1'),
+(17, 'trìu', 'hoangtrieu020903@gmail.com', '$2y$10$Hd6u4XHoX.34.IFeOeuOVe.llV6MxT9zXEIkENn9ESxA7aXcV6FfC', '2003-09-02', 'Nam', '123456789', '1');
 
 --
 -- Indexes for dumped tables
@@ -395,7 +398,7 @@ ALTER TABLE `movies`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `PaymentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `PaymentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `seats`
@@ -413,7 +416,7 @@ ALTER TABLE `show_times`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
