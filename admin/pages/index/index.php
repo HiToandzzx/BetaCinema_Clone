@@ -11,9 +11,42 @@
 </head>
 <body>
 	<?php
-        require 'config.php';
-        session_start();
-    ?>
+		session_start();
+
+		$servername = "localhost";
+		$username = "root";
+		$password = "";
+		$db_name = "betacinema_clone";
+		$connect = mysqli_connect($servername, $username, $password, $db_name);
+
+		if (!$connect) {
+			die("Connect failed: " . mysqli_connect_error());
+		}
+
+		function checkAdminLogin($connect) {
+			if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+				header("Location: /BetaCinema_Clone/auth/login.php");
+				exit;
+			} else {
+				$userId = $_SESSION['UserID'];
+				$sql = "SELECT `Role` FROM users WHERE UserID = ?";
+				$stmt = mysqli_prepare($connect, $sql);
+				mysqli_stmt_bind_param($stmt, "i", $userId);
+				mysqli_stmt_execute($stmt);
+				mysqli_stmt_bind_result($stmt, $role);
+				mysqli_stmt_fetch($stmt);
+				mysqli_stmt_close($stmt);
+
+				if ($role == 1) {
+					header("Location: /BetaCinema_Clone/auth/login.php");
+					exit;
+				}
+			}
+		}
+
+		checkAdminLogin($connect);
+	?>
+
 	<div class="wrapper d-flex align-items-stretch">
 		<nav id="sidebar">
 			<div class="custom-menu">
