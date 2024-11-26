@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2024 at 04:37 AM
+-- Generation Time: Nov 25, 2024 at 01:13 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -144,13 +144,15 @@ CREATE TABLE `payments` (
 --
 
 INSERT INTO `payments` (`PaymentID`, `PaymentDate`, `PaymentMethod`, `UserID`, `MovieTitle`, `CinemaName`, `ShowDate`, `HallName`, `StartTime`, `Seats`, `TotalPrice`) VALUES
-(10, '2024-11-14', 'Thanh toán tại Beta', 8, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-26', 'P2', '13:50:00', 'C1, C2, C3', 210000),
-(28, '2024-11-14', 'Thanh toán tại Beta', 8, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-27', 'P2', '13:50:00', 'D1, D2, D3', 360000),
-(40, '2024-11-21', 'Thanh toán tại Beta', 9, 'Thần Dược', 'Beta Nha Trang', '2024-11-30', 'P2', '17:00:00', 'B2, B3, B4', 135000),
-(46, '2024-11-21', 'Thanh toán tại Beta', 9, 'Cười Xuyên Biên Giới', 'Beta Nha Trang', '2024-11-30', 'P2', '17:00:00', 'A2, A3, A4', 135000),
-(47, '2024-11-21', 'Thanh toán tại Beta', 9, 'Venom: Kèo Cuối', 'Beta Nha Trang', '2024-11-30', 'P1', '17:00:00', 'A1, A2, A3', 135000),
-(54, '2024-11-21', 'Thanh toán tại Beta', 9, 'Linh Miêu', 'Beta Nha Trang', '2024-11-30', 'P2', '17:00:00', 'D3, D4, D5', 360000),
-(55, '2024-11-23', 'Thanh toán tại Beta', 13, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-26', 'P2', '22:10:00', 'D1, D2, D3', 360000);
+(10, '2024-11-14', 'Thanh toán tại Beta', 8, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-24', 'P2', '13:50:00', 'C1, C2, C3', 210000),
+(28, '2024-11-15', 'Thanh toán tại Beta', 8, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-27', 'P2', '13:50:00', 'D1, D2, D3', 360000),
+(63, '2024-11-25', 'Thanh toán tại Beta', 16, 'Red One: Mật Mã Đỏ', 'Beta Thanh Xuân', '2024-11-26', 'P2', '20:00:00', 'C1, C2, C3, C4, C5', 350000),
+(66, '2024-11-25', 'Thanh toán tại Beta', 9, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-26', 'P2', '13:50:00', 'A1, A2, A4, A5, B3', 225000),
+(67, '2024-11-25', 'Thanh toán tại Beta', 9, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-26', 'P2', '13:50:00', 'D1, D2, D3, D4, D5', 600000),
+(68, '2024-11-25', 'Thanh toán tại Beta', 9, 'Linh Miêu', 'Beta Thanh Xuân', '2024-11-30', 'P2', '17:00:00', 'C1, C2, C4, C5', 280000),
+(69, '2024-11-25', 'Thanh toán tại Beta', 9, 'Red One: Mật Mã Đỏ', 'Beta Thanh Xuân', '2024-11-26', 'P2', '13:50:00', 'A2, A3, A4', 135000),
+(70, '2024-11-25', 'Thanh toán tại Beta', 9, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-26', 'P2', '20:00:00', 'B2, B3, B4', 135000),
+(71, '2024-11-25', 'Thanh toán tại Beta', 9, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-25', 'P1', '22:00:00', 'A2, A3, A4', 135000);
 
 -- --------------------------------------------------------
 
@@ -287,7 +289,8 @@ INSERT INTO `show_times` (`ShowtimeID`, `ShowDate`, `StartTime`, `EndTime`, `Mov
 (57, '2024-11-30', '17:00:00', '18:50:00', 8, 1),
 (58, '2024-11-30', '20:00:00', '21:50:00', 8, 2),
 (59, '2024-12-01', '17:00:00', '18:50:00', 8, 1),
-(60, '2024-12-01', '20:00:00', '21:50:00', 8, 1);
+(60, '2024-12-01', '20:00:00', '21:50:00', 8, 1),
+(63, '2024-11-25', '22:00:00', '12:00:00', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -311,9 +314,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserID`, `Fullname`, `Email`, `Pass_word`, `Dob`, `Sex`, `Phone`, `Role`) VALUES
-(8, 'Nguyễn Huy Toàn', 'toan.nh.63cntt@ntu.edu.vn', '$2y$10$JZpN51oBCeJ3lklaJDhHf.LxHPRgeQD96Vv0DZkuRO.UK2DIQ8Sg6', '2003-03-14', 'Khác', '0935941419', '0'),
+(8, 'Admin', 'toan.nh.63cntt@ntu.edu.vn', '$2y$10$JZpN51oBCeJ3lklaJDhHf.LxHPRgeQD96Vv0DZkuRO.UK2DIQ8Sg6', '1999-09-09', 'Nam', '999999999', '0'),
 (9, 'Nguyen Huy Toan', 'nguyenhuytoan1432k3@gmail.com', '$2y$10$diq/yh9KEFPnU8sTQvA30OsN/XEPXNtPY5eEopQNH4.348u3lPWtq', '2024-11-24', 'Nam', '0935941419', '1'),
-(13, 'Trìu', 'hoangtrieu02092003@gmail.com', '$2y$10$Um93bj.LZdo48x1K8QfcoObG0.TMKOeo0Kp54vs3FeFs8YDBvw2A6', '2024-11-23', 'Nam', '123456789', '1');
+(16, 'test', 'test@gmail.com', '$2y$10$V79EtrV58aJzr5DUSmbuQO.t7OBugZzm4I2pO173iifqtTMYXGnNy', '2024-11-25', 'Khác', '123', '1');
 
 --
 -- Indexes for dumped tables
@@ -374,43 +377,43 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cinemas`
 --
 ALTER TABLE `cinemas`
-  MODIFY `CinemaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `CinemaID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `halls`
 --
 ALTER TABLE `halls`
-  MODIFY `HallID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `HallID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `MoviesID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `MoviesID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `PaymentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `PaymentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `seats`
 --
 ALTER TABLE `seats`
-  MODIFY `SeatID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `SeatID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `show_times`
 --
 ALTER TABLE `show_times`
-  MODIFY `ShowtimeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `ShowtimeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
