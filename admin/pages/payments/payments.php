@@ -185,8 +185,8 @@
                     <tr class="text-center font1">
                         <?php if ($groupBy === 'none') { ?>
                             <th scope="col">ID</th>
-                            <th scope="col">NGÀY THANH TOÁN</th>
-                            <th scope="col">PHƯƠNG THỨC</th>
+                            <th scope="col">NGÀY TT</th>
+                            <th scope="col">PTTT</th>
                             <th scope="col">ID USERS</th>
                             <th scope="col">TÊN PHIM</th>
                             <th scope="col">RẠP CHIẾU</th>

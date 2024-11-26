@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2024 at 04:47 AM
+-- Generation Time: Nov 26, 2024 at 04:40 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -153,9 +153,7 @@ INSERT INTO `payments` (`PaymentID`, `PaymentDate`, `PaymentMethod`, `UserID`, `
 (69, '2024-11-25', 'Thanh toán tại Beta', 9, 'Red One: Mật Mã Đỏ', 'Beta Thanh Xuân', '2024-11-26', 'P2', '13:50:00', 'A2, A3, A4', 135000),
 (70, '2024-11-25', 'Thanh toán tại Beta', 9, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-26', 'P2', '20:00:00', 'B2, B3, B4', 135000),
 (71, '2024-11-25', 'Thanh toán tại Beta', 9, 'Red One: Mật Mã Đỏ', 'Beta Nha Trang', '2024-11-25', 'P1', '22:00:00', 'A2, A3, A4', 135000),
-(72, '2024-11-26', 'Thanh toán tại Beta', 17, 'Cười Xuyên Biên Giới', 'Beta Trần Quang Khải', '2024-11-30', 'P2', '17:00:00', 'C2, C3, C4', 210000),
-(73, '2024-11-26', 'Thanh toán tại Beta', 17, 'Ngày Xưa Có Một Chuyện Tình', 'Beta Thanh Xuân', '2024-11-27', 'P1', '13:50:00', 'D3, D4, D5', 360000),
-(77, '2024-11-26', 'Thanh toán tại Beta', NULL, 'Ngày Xưa Có Một Chuyện Tình', 'Beta Nha Trang', '2024-11-26', 'P2', '19:00:00', 'D1, D2, D4, D3, D5', 600000);
+(72, '2024-11-26', 'Thanh toán tại Beta', 17, 'Cười Xuyên Biên Giới', 'Beta Trần Quang Khải', '2024-11-30', 'P2', '17:00:00', 'C2, C3, C4', 210000);
 
 -- --------------------------------------------------------
 
@@ -398,7 +396,7 @@ ALTER TABLE `movies`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `PaymentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `PaymentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `seats`
@@ -416,7 +414,7 @@ ALTER TABLE `show_times`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables

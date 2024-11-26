@@ -7,9 +7,12 @@ if (!isset($_GET['movie_id'])) {
 
 $movie_id = intval($_GET['movie_id']);
 
-$query = "DELETE FROM movies WHERE MoviesID = $movie_id";
+$query = "DELETE FROM show_times WHERE MovieID = $movie_id";
+mysqli_query($connect, $query);
 
-if (mysqli_query($connect, $query)) {
+$deleteQuery = "DELETE FROM movies WHERE MoviesID = $movie_id";
+
+if (mysqli_query($connect, $deleteQuery)) {
     header("Location: /BetaCinema_Clone/admin/pages/movies/movies.php");
     exit();
 } else {

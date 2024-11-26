@@ -96,6 +96,7 @@
                 <h1 class="text-center text-white">THÔNG TIN MOVIES</h1>
                 <a href="/BetaCinema_Clone/admin/pages/movies/add_movies.php" class="btn btn-success">THÊM MỚI MOVIES</a>
             </div>
+            
             <table class="table table-bordered table-striped table-primary mt-3">
                 <thead>
                     <tr class="text-center">
