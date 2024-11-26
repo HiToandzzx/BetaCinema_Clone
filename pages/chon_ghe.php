@@ -105,7 +105,7 @@
 
                             // Hiển thị ghế
                             $counter = 0;
-                            echo '<div class="d-flex flex-wrap justify-content-center gap-2">';
+                            echo '<div class="d-flex flex-wrap justify-content-center gap-1">';
                             while ($row_seat = mysqli_fetch_assoc($result_seats)) {
                                 $seat_number = htmlspecialchars($row_seat['SeatNumber']);
                                 $is_vip = $row_seat['VIP'];
@@ -133,7 +133,7 @@
 
                                 // Tạo nút hiển thị ghế
                                 if ($counter % 5 == 0 && $counter > 0) {
-                                    echo '</div><div class="d-flex flex-wrap justify-content-center gap-2">';
+                                    echo '</div><div class="d-flex flex-wrap justify-content-center gap-1">';
                                 }
 
                                 echo '<div class="col-sm-3 col-md-2 mb-3 w-10">';
